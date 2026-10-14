@@ -57,9 +57,8 @@
             <th>#</th>
             <th>Client</th>
             <?php if (!Auth::isAgent()): ?><th>Agent</th><?php endif; ?>
-            <th>Product / Service</th>
+            <th>Quotation No</th>
             <th>Value</th>
-            <th>Closing Date</th>
             <th>Status</th>
             <th>Actions</th>
           </tr>
@@ -74,7 +73,6 @@
           <?php endif; ?>
           <td><?= e($d['product_service'] ?? '—') ?></td>
           <td><?= money($d['deal_value']) ?></td>
-          <td><?= e($d['closing_date']) ?></td>
           <td><span class="badge bg-<?= statusBadge($d['status']) ?>"><?= e($d['status']) ?></span></td>
           <td>
             <div class="d-flex gap-1">

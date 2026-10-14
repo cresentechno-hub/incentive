@@ -53,7 +53,7 @@ class DealController
             'client_name'     => Security::sanitize($_POST['client_name']),
             'product_service' => Security::sanitize($_POST['product_service'] ?? ''),
             'deal_value'      => Security::float($_POST['deal_value']),
-            'closing_date'    => Security::sanitize($_POST['closing_date']),
+            'closing_date'    => date('Y-m-d'),
             'status'          => 'Pending',
             'notes'           => Security::sanitize($_POST['notes'] ?? ''),
         ]);
@@ -112,7 +112,6 @@ class DealController
             'client_name'     => Security::sanitize($_POST['client_name']),
             'product_service' => Security::sanitize($_POST['product_service'] ?? ''),
             'deal_value'      => Security::float($_POST['deal_value']),
-            'closing_date'    => Security::sanitize($_POST['closing_date']),
             'notes'           => Security::sanitize($_POST['notes'] ?? ''),
         ];
         if (Auth::can('Admin', 'Manager')) {
@@ -184,10 +183,6 @@ class DealController
         if (!Security::validatePositiveNumber($data['deal_value'] ?? '')) {
             $errors[] = 'Deal value must be a positive number.';
         }
-        if (!Security::validateDate($data['closing_date'] ?? '')) {
-            $errors[] = 'Closing date must be a valid date (YYYY-MM-DD).';
-        }
-
         return $errors;
     }
 }

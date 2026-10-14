@@ -164,6 +164,12 @@
       <i class="bi bi-cash-stack"></i> Payouts
     </a>
     <?php endif; ?>
+
+    <span class="nav-label">Support</span>
+    <a class="nav-link <?= str_contains($_SERVER['REQUEST_URI'], '/help') ? 'active' : '' ?>"
+       href="<?= url('help') ?>">
+      <i class="bi bi-question-circle"></i> Help
+    </a>
   </div>
 
   <div class="sidebar-footer">

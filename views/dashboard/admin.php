@@ -94,7 +94,7 @@
         <div class="table-responsive">
           <table class="table table-hover mb-0">
             <thead class="table-light"><tr>
-              <th>Client</th><th>Agent</th><th>Value</th><th>Date</th><th>Status</th>
+              <th>Client</th><th>Agent</th><th>Value</th><th>Status</th>
             </tr></thead>
             <tbody>
             <?php foreach ($recentDeals as $d): ?>
@@ -102,7 +102,6 @@
               <td class="fw-medium"><?= e($d['client_name']) ?></td>
               <td><?= e($d['agent_name']) ?></td>
               <td><?= money($d['deal_value']) ?></td>
-              <td><?= e($d['closing_date']) ?></td>
               <td><span class="badge bg-<?= statusBadge($d['status']) ?>"><?= e($d['status']) ?></span></td>
             </tr>
             <?php endforeach; ?>

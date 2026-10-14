@@ -27,6 +27,7 @@ $map = [
     'incentives' => 'IncentiveController',
     'agents'     => 'AgentController',
     'payouts'    => 'PayoutController',
+    'help'       => 'HelpController',
 ];
 
 // Handle /login and /logout as special slugs

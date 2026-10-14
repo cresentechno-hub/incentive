@@ -10,8 +10,8 @@ define('DB_CHARSET', 'utf8mb4');
 // ─── Application ─────────────────────────────────────────────
 define('APP_NAME',    'Incentive Manager');
 // Laragon vhost URL — matches the ServerName in auto.incentive-system.conf
-define('APP_URL',     'http://localhost:8090');
-define('BASE_PATH',   dirname(__FILE__));
+define('APP_URL',     'http://incentive-system');
+defined('BASE_PATH') || define('BASE_PATH', dirname(__FILE__));
 
 // ─── Session ─────────────────────────────────────────────────
 define('SESSION_NAME',     'incentive_sess');

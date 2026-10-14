@@ -85,7 +85,7 @@
     <div class="table-responsive">
       <table class="table table-hover mb-0">
         <thead class="table-light">
-          <tr><th>Client</th><th>Product/Service</th><th>Value</th><th>Closing</th><th>Status</th></tr>
+          <tr><th>Client</th><th>Quotation No</th><th>Value</th><th>Status</th></tr>
         </thead>
         <tbody>
         <?php foreach ($deals as $d): ?>
@@ -93,7 +93,6 @@
           <td class="fw-medium"><?= e($d['client_name']) ?></td>
           <td><?= e($d['product_service'] ?? '—') ?></td>
           <td><?= money($d['deal_value']) ?></td>
-          <td><?= e($d['closing_date']) ?></td>
           <td><span class="badge bg-<?= statusBadge($d['status']) ?>"><?= e($d['status']) ?></span></td>
         </tr>
         <?php endforeach; ?>

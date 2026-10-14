@@ -50,7 +50,7 @@
       </div>
 
       <div class="mb-3">
-        <label class="form-label fw-medium">Product / Service</label>
+        <label class="form-label fw-medium">Quotation No</label>
         <input type="text" name="product_service" class="form-control"
                value="<?= e($deal['product_service'] ?? '') ?>" maxlength="100"
                placeholder="e.g. Enterprise License">
@@ -64,11 +64,6 @@
             <input type="number" step="0.01" min="0" name="deal_value" class="form-control"
                    value="<?= e($deal['deal_value'] ?? '') ?>" required placeholder="0.00">
           </div>
-        </div>
-        <div class="col-sm-6">
-          <label class="form-label fw-medium">Closing Date <span class="text-danger">*</span></label>
-          <input type="date" name="closing_date" class="form-control"
-                 value="<?= e($deal['closing_date'] ?? date('Y-m-d')) ?>" required>
         </div>
       </div>
 
