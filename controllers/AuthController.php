@@ -13,22 +13,22 @@ class AuthController
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             Security::requireCsrf();
 
-            $email    = Security::email($_POST['email'] ?? '');
+            $login    = trim((string)($_POST['login'] ?? ''));
             $password = $_POST['password'] ?? '';
 
-            if (!Security::validateEmail($email)) {
-                $errors[] = 'Please enter a valid email address.';
+            if ($login === '') {
+                $errors[] = 'Please enter your username or email.';
             } elseif (empty($password)) {
                 $errors[] = 'Password is required.';
             } else {
-                $user = User::findByEmail($email);
+                $user = User::findByLogin($login);
 
                 if ($user && password_verify($password, $user['password_hash'])) {
                     Auth::login($user);
                     AuditLog::record('LOGIN', 'users', (int)$user['id']);
                     redirect('dashboard');
                 } else {
-                    $errors[] = 'Invalid email or password.';
+                    $errors[] = 'Invalid username/email or password.';
                 }
             }
         }

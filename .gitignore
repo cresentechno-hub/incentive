@@ -1,0 +1,4 @@
+config.local.php
+storage/*.log
+deploy/backup/
+deploy/dist/

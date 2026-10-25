@@ -73,9 +73,7 @@ class DealController
         $deal = Deal::getWithAgent((int)$id);
         if (!$deal) { redirect('deals'); }
 
-        // Agents can only edit their own pending deals
-        if (Auth::isAgent() &&
-            ((int)$deal['agent_id'] !== Auth::id() || $deal['status'] !== 'Pending')) {
+        if (Auth::isAgent() && (int)$deal['agent_id'] !== Auth::id()) {
             http_response_code(403);
             render('errors/403');
             return;
@@ -93,8 +91,7 @@ class DealController
         $deal = Deal::getWithAgent((int)$id);
         if (!$deal) { redirect('deals'); }
 
-        if (Auth::isAgent() &&
-            ((int)$deal['agent_id'] !== Auth::id() || $deal['status'] !== 'Pending')) {
+        if (Auth::isAgent() && (int)$deal['agent_id'] !== Auth::id()) {
             http_response_code(403);
             render('errors/403');
             return;

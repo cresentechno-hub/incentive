@@ -53,7 +53,7 @@ class AgentController
             'team_id'       => !empty($_POST['team_id']) ? Security::int($_POST['team_id']) : null,
             'name'          => Security::sanitize($_POST['name']),
             'email'         => Security::email($_POST['email']),
-            'password_hash' => password_hash(Security::sanitize($_POST['password']), PASSWORD_BCRYPT),
+            'password_hash' => password_hash((string)$_POST['password'], PASSWORD_BCRYPT),
             'status'        => 'active',
         ]);
 
@@ -89,7 +89,7 @@ class AgentController
             'status'  => in_array($_POST['status'] ?? '', ['active', 'inactive']) ? $_POST['status'] : 'active',
         ];
         if (!empty($_POST['password'])) {
-            $updates['password_hash'] = password_hash(Security::sanitize($_POST['password']), PASSWORD_BCRYPT);
+            $updates['password_hash'] = password_hash((string)$_POST['password'], PASSWORD_BCRYPT);
         }
 
         AuditLog::record('USER_UPDATED', 'users', (int)$id, $agent, $updates);

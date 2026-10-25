@@ -4,6 +4,19 @@ class User extends BaseModel
 {
     protected static string $table = 'users';
 
+    /** Look up an active user by username or email. */
+    public static function findByLogin(string $login): ?array
+    {
+        return Database::fetch(
+            "SELECT u.*, r.name AS role_name
+             FROM users u
+             JOIN roles r ON u.role_id = r.id
+             WHERE (u.username = ? OR u.email = ?) AND u.status = 'active'
+             LIMIT 1",
+            [$login, $login]
+        );
+    }
+
     public static function findByEmail(string $email): ?array
     {
         return Database::fetch(

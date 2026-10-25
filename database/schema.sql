@@ -1,8 +1,8 @@
 -- ============================================================
 -- Agent & Salesperson Incentive Management System
--- Database Schema — MySQL 8.0+
--- Default credentials for demo accounts: password123
--- Run public/setup.php once to create DB, import schema, and seed users.
+-- Database Schema — MySQL 8.0+ / MariaDB 10.4+
+-- Local dev: run public/setup.php once to create DB, import schema, and seed demo users.
+-- Production: import this file (or a clean dump) via phpMyAdmin, then create the admin user.
 -- ============================================================
 
 SET FOREIGN_KEY_CHECKS = 0;
@@ -23,6 +23,7 @@ CREATE TABLE IF NOT EXISTS `users` (
     `team_id`       INT UNSIGNED DEFAULT NULL,
     `name`          VARCHAR(100) NOT NULL,
     `email`         VARCHAR(150) NOT NULL UNIQUE,
+    `username`      VARCHAR(50) DEFAULT NULL UNIQUE,
     `password_hash` VARCHAR(255) NOT NULL,
     `status`        ENUM('active','inactive') DEFAULT 'active',
     `created_at`    TIMESTAMP DEFAULT CURRENT_TIMESTAMP,

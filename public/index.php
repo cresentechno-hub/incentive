@@ -4,9 +4,13 @@ require BASE_PATH . '/bootstrap.php';
 
 // ─── Route parsing ───────────────────────────────────────────
 $requestUri  = $_SERVER['REQUEST_URI'] ?? '/';
-$scriptBase  = rtrim(dirname($_SERVER['SCRIPT_NAME']), '/\\');
-$path        = urldecode(parse_url($requestUri, PHP_URL_PATH));
-$route       = ltrim(str_replace($scriptBase, '', $path), '/');
+$path        = urldecode((string)parse_url($requestUri, PHP_URL_PATH));
+// Strip the sub-folder from APP_URL (if any) so the app works at a domain root or in /subfolder
+$urlPrefix   = rtrim((string)parse_url(APP_URL, PHP_URL_PATH), '/');
+if ($urlPrefix !== '' && str_starts_with($path, $urlPrefix)) {
+    $path = substr($path, strlen($urlPrefix));
+}
+$route       = ltrim($path, '/');
 
 // Fallback to query-string ?route=
 if ($route === '' || $route === 'index.php') {

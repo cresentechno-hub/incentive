@@ -76,11 +76,9 @@
           <td><span class="badge bg-<?= statusBadge($d['status']) ?>"><?= e($d['status']) ?></span></td>
           <td>
             <div class="d-flex gap-1">
-              <?php if (Auth::isAgent() && $d['status'] === 'Pending'): ?>
               <a href="<?= url('deals/edit/' . $d['id']) ?>" class="btn btn-xs btn-outline-secondary btn-sm py-0 px-2">
                 <i class="bi bi-pencil"></i>
               </a>
-              <?php endif; ?>
 
               <?php if (Auth::can('Admin','Manager') && $d['status'] === 'Pending'): ?>
               <form method="POST" action="<?= url('deals/approve/' . $d['id']) ?>" class="d-inline">

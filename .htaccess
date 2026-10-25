@@ -1,0 +1,10 @@
+# Only used when the whole app folder sits inside public_html (e.g. public_html/incentive/).
+# Not needed when the domain's document root points at public/.
+# Sends every request into public/ so config.php, core/, models/ etc. stay unreachable.
+Options -Indexes
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule ^$ public/ [L]
+    RewriteRule ^(?!public/)(.*)$ public/$1 [L]
+</IfModule>

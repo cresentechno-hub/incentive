@@ -40,12 +40,12 @@
       <?= Security::csrfField() ?>
 
       <div class="mb-3">
-        <label class="form-label fw-medium">Email address</label>
+        <label class="form-label fw-medium">Username or email</label>
         <div class="input-group">
-          <span class="input-group-text"><i class="bi bi-envelope"></i></span>
-          <input type="email" name="email" class="form-control"
-                 value="<?= e($_POST['email'] ?? '') ?>"
-                 placeholder="you@company.com" required autofocus>
+          <span class="input-group-text"><i class="bi bi-person"></i></span>
+          <input type="text" name="login" class="form-control"
+                 value="<?= e($_POST['login'] ?? '') ?>"
+                 placeholder="username or you@company.com" required autofocus autocomplete="username">
         </div>
       </div>
 
@@ -67,13 +67,15 @@
       </button>
     </form>
 
+    <?php if (APP_ENV !== 'production'): ?>
     <hr class="my-4">
     <div class="text-center text-muted" style="font-size:.8rem">
       <strong>Demo accounts</strong><br>
       admin@demo.test / password123<br>
       manager@demo.test / password123<br>
-      agent@demo.test / password123
+      alice@demo.test / password123
     </div>
+    <?php endif; ?>
   </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
