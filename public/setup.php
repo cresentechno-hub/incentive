@@ -9,6 +9,12 @@ define('BASE_PATH', dirname(__DIR__));
 // Load config only (no bootstrap — DB may not exist yet)
 require BASE_PATH . '/config.php';
 
+// Dev-only: seeds demo users with a known password, so it must never run in production.
+if (APP_ENV === 'production') {
+    http_response_code(404);
+    exit;
+}
+
 $steps   = [];
 $success = true;
 
