@@ -236,7 +236,8 @@
           <?php
           $agentRows = [
               ['Name',     'Full name of the agent.',                           'Alice Sales'],
-              ['Email',    'Login email. Must be unique.',                      'alice@company.com'],
+              ['Email',    'Contact email. Can also be used to sign in.',       'alice@company.com'],
+              ['Username', 'Optional. Lets the user sign in with a short name instead of the email. 3-50 letters, numbers, dot, dash or underscore; must be unique.', 'alice.sales'],
               ['Role',     'Agent, Manager, or Admin.',                         'Agent'],
               ['Team',     'Optional team grouping for reporting.',              'North Region'],
               ['Password', 'Set on create. Agent can request a reset from Admin.', '—'],

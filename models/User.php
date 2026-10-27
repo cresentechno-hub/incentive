@@ -17,6 +17,14 @@ class User extends BaseModel
         );
     }
 
+    public static function usernameTaken(string $username, ?int $exceptId = null): bool
+    {
+        return Database::fetch(
+            "SELECT id FROM users WHERE username = ? AND id <> ? LIMIT 1",
+            [$username, $exceptId ?? 0]
+        ) !== null;
+    }
+
     public static function findByEmail(string $email): ?array
     {
         return Database::fetch(

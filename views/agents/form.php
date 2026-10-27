@@ -38,6 +38,15 @@
       </div>
 
       <div class="mb-3">
+        <label class="form-label fw-medium">Username</label>
+        <input type="text" name="username" class="form-control"
+               value="<?= e($agent['username'] ?? '') ?>" maxlength="50"
+               pattern="[A-Za-z0-9._\-]{3,50}" autocomplete="off"
+               placeholder="Optional - lets this user sign in without an email">
+        <div class="form-text">3-50 characters: letters, numbers, dot, dash, underscore. Must be unique.</div>
+      </div>
+
+      <div class="mb-3">
         <label class="form-label fw-medium">
           Password <?= $isEdit ? '' : '<span class="text-danger">*</span>' ?>
         </label>

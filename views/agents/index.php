@@ -14,12 +14,13 @@
     <div class="table-responsive">
       <table class="table table-hover mb-0">
         <thead class="table-light">
-          <tr><th>Name</th><th>Email</th><th>Role</th><th>Team</th><th>Status</th><th>Actions</th></tr>
+          <tr><th>Name</th><th>Username</th><th>Email</th><th>Role</th><th>Team</th><th>Status</th><th>Actions</th></tr>
         </thead>
         <tbody>
         <?php foreach ($agents as $a): ?>
         <tr>
           <td class="fw-medium"><?= e($a['name']) ?></td>
+          <td><?= e($a['username'] ?? '—') ?></td>
           <td><?= e($a['email']) ?></td>
           <td>
             <span class="badge bg-<?= match($a['role_name']){
